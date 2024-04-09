@@ -17,7 +17,9 @@
                 <h2>Skills Table</h2>
             </div>
             <div class="pull-right mb-2">
+                 @if(Auth::user()->role === 'Admin')
                 <a class="btn btn-success" href="{{ route('skills.create') }}"> Create Skills</a>
+                @endif
             </div>
         </div>
     </div>
@@ -43,13 +45,14 @@
                 <td>{{ $skill->percentage }}</td>
                 <td>
                     <form action="{{ route('skills.destroy',$skill->id) }}" method="Post">
-        
+                        @if(Auth::user()->role === 'Admin')
                         <a class="btn btn-primary" href="{{ route('skills.edit',$skill->id) }}">Edit</a>
-       
+                        @endif
                         @csrf
                         @method('DELETE')
-          
+                        @if(Auth::user()->role === 'Admin')
                         <button type="submit" class="btn btn-danger">Delete</button>
+                        @endif
                     </form>
                 </td>
             </tr>
@@ -57,7 +60,9 @@
         </table>
     </div>
     <div class="pull-right">
+            @if(Auth::user()->role === 'Admin')
             <a class="btn btn-primary" href="{{ route('home') }}"> Back</a>
+            @endif
         </div>
 </body>
 </html>

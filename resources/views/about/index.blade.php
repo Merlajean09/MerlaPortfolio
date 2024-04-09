@@ -43,11 +43,14 @@
                 <td>{{ $about->address }}</td>
                 <td>
                     <form action="{{ route('abouts.destroy',$about->id) }}" method="Post">
+                         @if(Auth::user()->role === 'Admin')
                         <a class="btn btn-primary" href="{{ route('abouts.edit',$about->id) }}">Edit</a>
+                        @endif
                         @csrf
                         @method('DELETE')
-          
+                        @if(Auth::user()->role === 'Admin')
                         <button type="submit" class="btn btn-danger">Delete</button>
+                        @endif
                     </form>
                 </td>
             </tr>

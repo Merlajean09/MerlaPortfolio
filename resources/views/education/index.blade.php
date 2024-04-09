@@ -17,7 +17,9 @@
                 <h2>Education Table</h2>
             </div>
             <div class="pull-right mb-2">
+                @if(Auth::user()->role === 'Admin')
                 <a class="btn btn-success" href="{{ route('education.create') }}"> Create Education</a>
+                @endif
             </div>
         </div>
     </div>
@@ -47,13 +49,14 @@
                 <td>{{ $education->address }}</td>
                 <td>
                     <form action="{{ route('education.destroy',$education->id) }}" method="Post">
-        
+                        @if(Auth::user()->role === 'Admin')
                         <a class="btn btn-primary" href="{{ route('education.edit',$education->id) }}">Edit</a>
-       
+                        @endif
                         @csrf
                         @method('DELETE')
-          
+                        @if(Auth::user()->role === 'Admin')
                         <button type="submit" class="btn btn-danger">Delete</button>
+                        @endif
                     </form>
                 </td>
             </tr>
@@ -61,7 +64,9 @@
         </table>
     </div>
     <div class="pull-right">
+            @if(Auth::user()->role === 'Admin')
             <a class="btn btn-primary" href="{{ route('home') }}"> Back</a>
+            @endif
         </div>
 </body>
 </html>

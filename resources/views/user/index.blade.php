@@ -18,7 +18,7 @@
                 <h2>Users Table</h2>
             </div>
             <div class="pull-right mb-2">
-                @if(auth()->user()->role == 'Admin')
+                @if(Auth::user()->role === 'Admin')
                 <a class="btn btn-success" href="{{ route('users.create') }}"> Create Users</a>
                 @endif
             </div>
@@ -48,10 +48,12 @@
                 <td>{{ $user->email }}</td>
                 <td>
                     <form action="{{ route('users.destroy',$user->id) }}" method="Post">
-                        @if(auth()->user()->role == 'Admin' || $user->role != 'Admin')
+                        @if(Auth::user()->role === 'Admin')
                         <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                        @endif
                         @csrf
                         @method('DELETE')
+                        @if(Auth::user()->role === 'Admin')
                         <button type="submit" class="btn btn-danger">Delete</button>
                         @endif
                     </form>
@@ -61,7 +63,9 @@
         </table>
     </div>
     <div class="pull-right">
+        @if(Auth::user()->role === 'Admin')
         <a class="btn btn-primary" href="{{ route('home') }}"> Back</a>
+        @endif
     </div>
 </div>
 
