@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WebinarController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
