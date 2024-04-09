@@ -1,4 +1,4 @@
-@extends('home')
+@extends ('home')
 @section('table')
 <!DOCTYPE html>
 <html lang="en">
