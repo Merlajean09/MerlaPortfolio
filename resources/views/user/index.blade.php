@@ -40,8 +40,10 @@
                 <th>Email</th>
                 <th width="280px">Action</th>
             </tr>
-            @foreach ($users as $user)
+            
             <tr>
+                @foreach ($users as $user)
+                @if($users->role == 'spectator')
                 <td>{{ ++$i }}</td>
                 <td>{{ $user->role }}</td>
                 <td>{{ $user->name }}</td>
@@ -59,6 +61,7 @@
                     </form>
                 </td>
             </tr>
+                @endif
             @endforeach
         </table>
     </div>
